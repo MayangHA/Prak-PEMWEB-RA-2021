@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+    <div class="opsi">
+        <label for="theme"> Select theme: </label>
+        <select name="theme" id="theme" onchange="bg_theme(this)">
+            <option value="white">White</option>
+            <option value="black">Black</option>
+        </select>
+    </div>
+
+    <h2>This my website</h2>
+
+
+    <div class="weather">
+        <label for="cuaca"> Select the weather type today: </label>
+        <select name="cuaca" onchange="weather_change(this)">
+            <option value="rainy">Rainy</option>
+            <option value="sunny">Sunny</option>
+        </select>
+
+        <div id="cuaca">
+
+        </div>
+    </div>
+
+    <div class="faktorial">
+        <label for="faktor">Masukan Angka: </label>
+        <input type="number" name="angka" id="angka">
+        <button type="submit" onclick="fktrl(this)">Get Faktorial</button>
+
+        <div id="Hasil"></div>
+    </div>
+
+
+    <script>
+        function bg_theme(e) {
+            console.log(e.value)
+            document.body.style.backgroundColor = e.value
+
+            switch (e.value) {
+                case "black":
+                    document.body.style.color = 'white';
+                    break;
+                default:
+                    document.body.style.color = 'black';
+                    break;
+            }
+        }
+
+        function weather_change(e) {
+            switch (e.value) {
+                case "sunny":
+                    document.getElementById("cuaca").innerHTML = "It is nice and sunny outside today. Wear shorts! Go to the beach, or the park, and get an ice cream.";
+                    break;
+                default:
+                    document.getElementById("cuaca").innerHTML = "Rain is falling outside; take a rain coat and a brolly, and don't stay out for too long.";
+                    break;
+            }
+        }
+
+        function fktrl(e) {
+            var faktori = document.getElementById('angka');
+            let hasil = 1;
+            switch (e.value) {
+                case "1":
+                    hasil = 1;
+                    break;
+                case "0":
+                    hasil = 0;
+                    break;
+                default:
+                    for (var i = faktori.value; i >= 1; i--) {
+                        hasil = hasil * i;
+                    }
+            }
+            var result = document.getElementById("Hasil");
+            result.innerText = "The factorial of " + faktori.value + " is " + hasil;
+        }
+    </script>
+
+
+
+</body>
+
+
+
+
+</html>
